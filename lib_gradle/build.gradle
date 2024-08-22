@@ -1,0 +1,40 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+    id 'groovy'
+}
+
+dependencies {
+    implementation "com.android.tools.build:gradle:8.2.2"
+}
+
+
+//将插件打包上传到本地maven仓库
+group 'com.example.lib_gradle'
+version '1.0.0'
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = group
+            artifactId = 'dependencies'
+            version = version
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+//            url uri('../repos') //指定本地maven的路径，在项目根目录下
+            url = '../repos'
+        }
+    }
+}
+
+gradlePlugin{
+    plugins{
+        DependenciesPlugin{
+            id = 'com.example.lib_gradle.dependencies'
+            implementationClass = 'com.example.lib_gradle.DependenciesPlugin'
+        }
+    }
+}
