@@ -1,10 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'com.example.lib_gradle.dependencies'
+//    id 'com.example.lib_gradle.dependencies'
 }
 
-apply plugin: 'com.example.lib_gradle.dependencies'
+//apply plugin: 'com.example.lib_gradle.dependencies'
 
 android {
     namespace 'com.example.mygradle'
